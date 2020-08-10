@@ -44,13 +44,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: .ruby-version
+    - shell: bash
+      env:
+        SUPER_SECRET: ${{ secrets.MY_SECRET_VARIABLE }}
 
-    - name: CI Tool
-      run: echo 'USING GITHUB ACTIONS'
+      run: |
+        echo "$SUPER_SECRET"
+
+    # - name: CI Tool
+    #   run: echo "$SUPER_SECRET"
 
     # Show bundler version
     - name: Which bundler?
