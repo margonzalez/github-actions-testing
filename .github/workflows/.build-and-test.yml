@@ -1,10 +1,11 @@
 name: Build & Test
 
 on:
-  workflow_dispatch:
-    inputs:
-      tags:
-        description: 'Tags'
+  push:
+    branches:
+      - '*'
+      - '!master'
+      - '!*release*'
 
 jobs:
   build_and_test:
